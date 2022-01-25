@@ -1,5 +1,5 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-//import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Link,Navigate, Route, Routes } from 'react-router-dom'
+import { useState } from 'react'
 
 // pages
 import Home from './pages/Home'
@@ -8,6 +8,8 @@ import Products from './pages/Products'
 import ProductDetails from './pages/ProductDetails'
 
 function App() {
+  const [cartIsEmpty] = useState(false)
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -25,8 +27,14 @@ function App() {
           <Route path="/fuck" element={(
             <div>
               <h1>FUCK</h1>
+              <p>Gonna Fuck Yourself<p>
             </div>
-          )} />
+          )} />        
+          <Route path="/redirect" element={<Navigate to="/about" />} />
+          <Route
+            path="/checkout"
+            element={cartIsEmpty ? <Navigate to="/products" /> : <p>checkout<p>}
+          />  
         </Routes>
       </BrowserRouter>
     </div>
