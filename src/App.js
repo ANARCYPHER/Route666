@@ -1,4 +1,4 @@
-import { BrowserRouter, Link,Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 
 // pages
@@ -20,21 +20,20 @@ function App() {
           <Link to="/products">Products</Link>
         </nav>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />           
-          <Route path="/products/:id" element={<ProductDetails />} />           
-          <Route path="/products" element={<Products />} />         
-          <Route path="/fuck" element={(
+          <Route path="/" element={<Home />} />
+          <Route path="/about/*" element={<About />} />
+          <Route path="/products/:id/*" element={<ProductDetails />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/test" element={(
             <div>
-              <h1>FUCK</h1>
-              <p>Gonna Fuck Yourself<p>
+              <h2>Test page</h2>
             </div>
-          )} />        
+          )} />
           <Route path="/redirect" element={<Navigate to="/about" />} />
-          <Route
-            path="/checkout"
-            element={cartIsEmpty ? <Navigate to="/products" /> : <p>checkout<p>}
-          />  
+          <Route 
+            path="/checkout" 
+            element={cartIsEmpty ? <Navigate to="/products" /> : <p>checkout</p>}
+          />
         </Routes>
       </BrowserRouter>
     </div>
